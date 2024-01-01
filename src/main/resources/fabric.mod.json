@@ -5,7 +5,11 @@
   "name": "Hittable",
   "description": "A mod that makes mobs glow if they are within your reach.",
   "authors": ["Lumiafk"],
-  "contact": {},
+  "contact": {
+    "homepage": "https://modrinth.com/mod/hittable",
+    "sources": "https://github.com/Emirlol/Hittable",
+    "issues": "https://github.com/Emirlol/Hittable/issues"
+  },
   "license": "MIT",
   "icon": "icon/glow.png",
   "environment": "client",
