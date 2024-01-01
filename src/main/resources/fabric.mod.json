@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "hittable",
+  "version": "${version}",
+  "name": "Hittable",
+  "description": "A mod that makes mobs glow if they are within your reach.",
+  "authors": ["Lumiafk"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "icon/glow.png",
+  "environment": "client",
+  "mixins": ["hittable.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": ">=1.20"
+  },
+  "suggests": {
+    "modmenu": ">=7.0.0"
+  },
+  "entrypoints": {
+    "modmenu": [ "me.lumiafk.hittable.modmenu.ModMenuApiImpl" ]
+  }
+}
