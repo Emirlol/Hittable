@@ -1,5 +1,6 @@
 package me.lumiafk.hittable.config
 
+import me.lumiafk.hittable.modmenu.ConfigScreen.Companion.hexToInt
 import net.minecraft.client.MinecraftClient
 import net.minecraft.util.math.ColorHelper
 
@@ -30,7 +31,7 @@ object Config {
 		MinecraftClient.getInstance()?.runDirectory?.resolve("config/Hittable-GlowColor.txt")?.let { file ->
 			if (file.exists()) return file.readText().toInt()
 		}
-		return 0xFFFFFF
+		return "FFFFFFFF".hexToInt()
 	}
 
 	fun reload() {
