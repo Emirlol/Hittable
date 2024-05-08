@@ -1,14 +1,7 @@
 # Configuring
-Modmenu is pretty much necessary for this. The color is saved as a single integer under `.minecraft/config/Hittable-GlowColor.txt` in an ARGB format, so editing that by yourself won't be very easy unless you know how to construct such an integer.
+Modmenu is pretty much necessary for this. The color is saved as a single integer under `.minecraft/config/hittable.json5` in RGB format, so editing that by yourself won't be very easy unless you know how to construct such an integer. The mod can also be enabled/disabled from the same config.
 
-You can access the config screen with modmenu, there's a single text field that accepts colors in RGB or RGBA in hexadecimal or decimal format (with each channel separated by a ',').
-
-Examples: `#0388fc`; `03FC39AA`; `248, 3, 252`; `255,196,0,125`
-
-Notes: 
-* Alpha (transparency) is assumed to be 255 (opaque) if left empty
-* Spaces are optional in decimal format
-* \# is optional in hexadecimal format
+With modmenu you can use the color picker or enter the color in hexadecimal format (which is basically what every color picker will give you).
 
 # Building from source
 Simply run the `assemble` task in gradle.
