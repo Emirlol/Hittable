@@ -20,7 +20,7 @@ public abstract class GameRendererMixin implements AutoCloseable {
     @Unique
     Entity previousEntity = null;
 
-    @Inject(method = "updateTargetedEntity", at = @At("TAIL"))
+    @Inject(method = "updateCrosshairTarget", at = @At("TAIL"))
     private void setTargetGlowing(CallbackInfo ci) {
         if (client.targetedEntity == null) {
             if (previousEntity != null) {

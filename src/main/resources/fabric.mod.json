@@ -3,8 +3,10 @@
   "id": "hittable",
   "version": "${version}",
   "name": "Hittable",
-  "description": "A mod that makes mobs glow if they are within your reach.",
-  "authors": ["Lumiafk"],
+  "description": "A mod that makes mobs within your reach glow when you look at them.",
+  "authors": [
+    "Rime"
+  ],
   "contact": {
     "homepage": "https://modrinth.com/mod/hittable",
     "sources": "https://github.com/Emirlol/Hittable",
@@ -13,16 +15,29 @@
   "license": "MIT",
   "icon": "icon/glow.png",
   "environment": "client",
-  "mixins": ["hittable.mixins.json"],
+  "mixins": [
+    "hittable.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.15.0",
     "fabric-api": "*",
-    "minecraft": ">=1.20"
+    "minecraft": ">=1.20.5",
+    "fabric-language-kotlin": ">=${fabric_kotlin_version}"
   },
   "suggests": {
-    "modmenu": ">=7.0.0"
+    "modmenu": ">=9.0.0"
   },
   "entrypoints": {
-    "modmenu": [ "me.lumiafk.hittable.modmenu.ModMenuApiImpl" ]
+    "client": [
+      {
+        "value": "me.lumiafk.hittable.Hittable",
+        "adapter": "kotlin"
+      }
+    ],
+    "modmenu": [
+      {
+        "value": "me.lumiafk.hittable.modmenu.ModMenuApiImpl"
+      }
+    ]
   }
 }
