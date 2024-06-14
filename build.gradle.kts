@@ -1,11 +1,11 @@
 plugins {
 	id("fabric-loom") version "1.6-SNAPSHOT"
 	id("maven-publish")
-	kotlin("jvm") version "1.9.24"
+	kotlin("jvm") version "2.0.0"
 }
 
 group = "me.lumiafk"
-version = 2.1
+version = "2.1.1"
 
 repositories {
 	mavenCentral()

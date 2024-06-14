@@ -1,12 +1,14 @@
 package me.lumiafk.hittable
 
+import com.mojang.brigadier.Command
 import me.lumiafk.hittable.config.ConfigHandler
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback
+import net.fabricmc.fabric.api.client.message.v1.ClientSendMessageEvents
 
-class Hittable : ClientModInitializer {
-    override fun onInitializeClient() {
+object Hittable {
+    fun onInitializeClient() {
         check(ConfigHandler.load()) { "Failed to load config." }
         ClientCommandRegistrationCallback.EVENT.register { dispatcher, _ ->
             dispatcher.register(
@@ -16,7 +18,7 @@ class Hittable : ClientModInitializer {
                             it.setScreen(ConfigHandler.createGui(it.currentScreen))
                         }
                     }
-                    1
+                    Command.SINGLE_SUCCESS
                 })
             )
         }
