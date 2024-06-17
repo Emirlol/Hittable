@@ -2,12 +2,11 @@ package me.lumiafk.hittable
 
 import com.mojang.brigadier.Command
 import me.lumiafk.hittable.config.ConfigHandler
-import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback
-import net.fabricmc.fabric.api.client.message.v1.ClientSendMessageEvents
 
 object Hittable {
+    @Suppress("unused")
     fun onInitializeClient() {
         check(ConfigHandler.load()) { "Failed to load config." }
         ClientCommandRegistrationCallback.EVENT.register { dispatcher, _ ->

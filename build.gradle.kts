@@ -1,7 +1,7 @@
 plugins {
 	id("fabric-loom") version "1.6-SNAPSHOT"
-	id("maven-publish")
 	kotlin("jvm") version "2.0.0"
+	id("me.modmuss50.mod-publish-plugin") version "0.5.1"
 }
 
 group = "me.lumiafk"
@@ -21,15 +21,7 @@ dependencies {
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${properties["fabric_version"]}")
 	modImplementation("net.fabricmc:fabric-language-kotlin:${properties["fabric_kotlin_version"]}")
 	modCompileOnly("com.terraformersmc:modmenu:${properties["modmenu_version"]}")
-	include(modImplementation("dev.isxander:yet-another-config-lib:${project.property("yacl_version")}")!!)
-}
-
-publishing {
-	publications {
-		create<MavenPublication>("mavenJava") {
-			from(components["java"])
-		}
-	}
+	modImplementation("dev.isxander:yet-another-config-lib:${properties["yacl_version"]}")
 }
 
 tasks {
@@ -37,7 +29,7 @@ tasks {
 		filteringCharset = "UTF-8"
 		filesMatching("fabric.mod.json") {
 			expand(
-				"version" to project.version,
+				"version" to version,
 				"fabric_kotlin_version" to project.properties["fabric_kotlin_version"]
 			)
 		}
@@ -49,5 +41,22 @@ tasks {
 		from("LICENSE") {
 			rename { "${this}_Hittable" }
 		}
+	}
+}
+
+publishMods {
+	file = tasks.remapJar.get().archiveFile
+	modLoaders.add("fabric")
+	type = STABLE
+	displayName = "Hittable ${version.get()}"
+	changelog = ""
+	modrinth {
+		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+		projectId = "NxDKOEV1"
+		minecraftVersions.addAll("1.21")
+		requires("fabric-api")
+		requires("fabric-language-kotlin")
+		requires("yacl")
+		optional("modmenu")
 	}
 }
