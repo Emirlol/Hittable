@@ -1,7 +1,7 @@
 plugins {
 	id("fabric-loom") version "1.8-SNAPSHOT"
-	kotlin("jvm") version "2.0.0"
-	id("me.modmuss50.mod-publish-plugin") version "0.5.1"
+	kotlin("jvm") version "2.0.21"
+	id("me.modmuss50.mod-publish-plugin") version "0.7.4"
 }
 
 group = "me.lumiafk"
@@ -56,7 +56,7 @@ publishMods {
 	modrinth {
 		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
 		projectId = "NxDKOEV1"
-		minecraftVersions.addAll("1.21", "1.21.1")
+		minecraftVersions.addAll("1.21.2", "1.21.3")
 		requires("fabric-api")
 		requires("fabric-language-kotlin")
 		requires("yacl")
