@@ -1,5 +1,5 @@
 plugins {
-	id("fabric-loom") version "1.6-SNAPSHOT"
+	id("fabric-loom") version "1.8-SNAPSHOT"
 	kotlin("jvm") version "2.0.0"
 	id("me.modmuss50.mod-publish-plugin") version "0.5.1"
 }
@@ -30,7 +30,8 @@ tasks {
 		filesMatching("fabric.mod.json") {
 			expand(
 				"version" to version,
-				"fabric_kotlin_version" to project.properties["fabric_kotlin_version"]
+				"fabric_kotlin_version" to project.properties["fabric_kotlin_version"],
+				"yacl_version" to project.properties["yacl_version"]
 			)
 		}
 	}
