@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "me.lumiafk"
-version = "2.2.0"
+version = "${properties["mod_version"]}+${properties["minecraft_version"]}"
 
 repositories {
 	mavenCentral()
@@ -20,8 +20,8 @@ dependencies {
 	modImplementation("net.fabricmc:fabric-loader:${properties["loader_version"]}")
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${properties["fabric_version"]}")
 	modImplementation("net.fabricmc:fabric-language-kotlin:${properties["fabric_kotlin_version"]}")
-	modCompileOnly("com.terraformersmc:modmenu:${properties["modmenu_version"]}")
 	modImplementation("dev.isxander:yet-another-config-lib:${properties["yacl_version"]}")
+	modCompileOnly("com.terraformersmc:modmenu:${properties["modmenu_version"]}")
 }
 
 tasks {
@@ -49,8 +49,10 @@ publishMods {
 	file = tasks.remapJar.get().archiveFile
 	modLoaders.add("fabric")
 	type = STABLE
-	displayName = "Hittable ${version.get()}"
-	changelog = ""
+	displayName = "Hittable ${properties["mod_version"]} for Minecraft ${properties["minecraft_version"]}"
+	changelog = """
+		
+	""".trimIndent()
 	modrinth {
 		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
 		projectId = "NxDKOEV1"
