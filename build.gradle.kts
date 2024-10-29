@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "me.lumiafk"
-version = "2.1.1"
+version = "2.2.0"
 
 repositories {
 	mavenCentral()
@@ -54,10 +54,11 @@ publishMods {
 	modrinth {
 		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
 		projectId = "NxDKOEV1"
-		minecraftVersions.addAll("1.21")
+		minecraftVersions.addAll("1.21", "1.21.1")
 		requires("fabric-api")
 		requires("fabric-language-kotlin")
 		requires("yacl")
 		optional("modmenu")
+		featured = true
 	}
 }
