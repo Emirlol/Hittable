@@ -22,13 +22,8 @@ public abstract class WorldRendererMixin {
 	@Shadow
 	private MinecraftClient client;
 
-	@WrapOperation(method = "renderEntities", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;hasOutline(Lnet/minecraft/entity/Entity;)Z"))
+	@WrapOperation(method = {"renderEntities", "getEntitiesToRender"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;hasOutline(Lnet/minecraft/entity/Entity;)Z"))
 	private boolean hittable$hasOutline(MinecraftClient instance, Entity entity, Operation<Boolean> original) {
-		return (client.targetedEntity == entity && ConfigHandler.INSTANCE.getConfig().getEnabled()) || original.call(instance, entity);
-	}
-
-	@WrapOperation(method = "getEntitiesToRender", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/MinecraftClient;hasOutline(Lnet/minecraft/entity/Entity;)Z"))
-	private boolean hittable$hasOutline2(MinecraftClient instance, Entity entity, Operation<Boolean> original) {
 		return (client.targetedEntity == entity && ConfigHandler.INSTANCE.getConfig().getEnabled()) || original.call(instance, entity);
 	}
 
