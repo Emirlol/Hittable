@@ -11,6 +11,7 @@ import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.client.gui.screen.Screen
 import java.awt.Color
 
+//TODO: Consider using the yacl dsl for the config
 object ConfigHandler {
     private val HANDLER = ConfigClassHandler.createBuilder(Config::class.java).serializer {
         GsonConfigSerializerBuilder.create(it)
