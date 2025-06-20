@@ -1,11 +1,11 @@
 plugins {
-	id("fabric-loom") version "1.8-SNAPSHOT"
-	kotlin("jvm") version "2.0.21"
-	id("me.modmuss50.mod-publish-plugin") version "0.7.4"
+	alias(libs.plugins.loom)
+	alias(libs.plugins.kotlin)
+	alias(libs.plugins.modPublish)
 }
 
 group = "me.lumiafk"
-version = "${properties["mod_version"]}+${properties["minecraft_version"]}"
+version = "${properties["mod_version"]}+${libs.versions.minecraft.get()}"
 
 repositories {
 	mavenCentral()
@@ -15,24 +15,29 @@ repositories {
 }
 
 dependencies {
-	minecraft("com.mojang:minecraft:${properties["minecraft_version"]}")
-	mappings("net.fabricmc:yarn:${properties["yarn_mappings"]}:v2")
-	modImplementation("net.fabricmc:fabric-loader:${properties["loader_version"]}")
-	modImplementation("net.fabricmc.fabric-api:fabric-api:${properties["fabric_version"]}")
-	modImplementation("net.fabricmc:fabric-language-kotlin:${properties["fabric_kotlin_version"]}")
-	modImplementation("dev.isxander:yet-another-config-lib:${properties["yacl_version"]}")
-	modCompileOnly("com.terraformersmc:modmenu:${properties["modmenu_version"]}")
+	minecraft(libs.minecraft)
+	mappings(variantOf(libs.yarn) { classifier("v2") })
+	modImplementation(libs.fabricLoader)
+
+	modImplementation(libs.fabricApi)
+	modImplementation(libs.fabricLanguageKotlin)
+	modImplementation(libs.yacl)
+	modCompileOnly(libs.modMenu)
 }
 
 tasks {
 	processResources {
+		val map = mapOf(
+			"version" to version,
+			"minecraft_version" to libs.versions.minecraft.get(),
+			"fabric_language_kotlin_version" to libs.versions.fabricLanguageKotlin.get(),
+			"yacl_version" to libs.versions.yacl.get(),
+			"modmenu_version" to libs.versions.modMenu.get(),
+		)
 		filteringCharset = "UTF-8"
+		inputs.properties(map)
 		filesMatching("fabric.mod.json") {
-			expand(
-				"version" to version,
-				"fabric_kotlin_version" to project.properties["fabric_kotlin_version"],
-				"yacl_version" to project.properties["yacl_version"]
-			)
+			expand(map)
 		}
 	}
 	kotlin {
@@ -40,7 +45,7 @@ tasks {
 	}
 	jar {
 		from("LICENSE") {
-			rename { "${this}_Hittable" }
+			rename { "${it}_${base.archivesName.get()}" }
 		}
 	}
 }
@@ -49,14 +54,14 @@ publishMods {
 	file = tasks.remapJar.get().archiveFile
 	modLoaders.add("fabric")
 	type = STABLE
-	displayName = "Hittable ${properties["mod_version"]} for Minecraft ${properties["minecraft_version"]}"
+	displayName = "Hittable ${properties["mod_version"]} for Minecraft ${libs.versions.minecraft.get()}"
 	changelog = """
 		
 	""".trimIndent()
 	modrinth {
 		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
 		projectId = "NxDKOEV1"
-		minecraftVersions.addAll("1.21.2", "1.21.3", "1.21.4", "1.21.5")
+		minecraftVersions.addAll("1.21.2", "1.21.3", "1.21.4", "1.21.5", "1.21.6")
 		requires("fabric-api")
 		requires("fabric-language-kotlin")
 		requires("yacl")

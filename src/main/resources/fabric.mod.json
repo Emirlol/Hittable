@@ -1,42 +1,42 @@
 {
-  "schemaVersion": 1,
-  "id": "hittable",
-  "version": "${version}",
-  "name": "Hittable",
-  "description": "A mod that makes mobs within your reach glow when you look at them.",
-  "authors": [
-    "Rime"
-  ],
-  "contact": {
-    "homepage": "https://modrinth.com/mod/hittable",
-    "sources": "https://github.com/Emirlol/Hittable",
-    "issues": "https://github.com/Emirlol/Hittable/issues"
-  },
-  "license": "MIT",
-  "icon": "icon/glow.png",
-  "environment": "client",
-  "mixins": [
-    "hittable.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.16.7",
-    "fabric-api": "*",
-    "minecraft": ">=1.21.2 <=1.21.5",
-    "fabric-language-kotlin": ">=${fabric_kotlin_version}",
-    "yet_another_config_lib_v3": ">=${yacl_version}"
-  },
-  "suggests": {
-    "modmenu": ">=12.0.0-beta.1"
-  },
-  "entrypoints": {
-    "client": [
-      {
-        "value": "me.lumiafk.hittable.Hittable::onInitializeClient",
-        "adapter": "kotlin"
-      }
-    ],
-    "modmenu": [
-      "me.lumiafk.hittable.modmenu.ModMenuApiImpl"
-    ]
-  }
+	"schemaVersion": 1,
+	"id": "hittable",
+	"version": "${version}",
+	"name": "Hittable",
+	"description": "A mod that makes mobs within your reach glow when you look at them.",
+	"authors": [
+		"Rime"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/hittable",
+		"sources": "https://github.com/Emirlol/Hittable",
+		"issues": "https://github.com/Emirlol/Hittable/issues"
+	},
+	"license": "MIT",
+	"icon": "icon/glow.png",
+	"environment": "client",
+	"mixins": [
+		"hittable.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.7",
+		"fabric-api": "*",
+		"minecraft": ">=1.21.2 <=1.21.6",
+		"fabric-language-kotlin": ">=${fabric_language_kotlin_version}",
+		"yet_another_config_lib_v3": ">=${yacl_version}"
+	},
+	"suggests": {
+		"modmenu": ">=${modmenu_version}"
+	},
+	"entrypoints": {
+		"client": [
+			{
+				"value": "me.lumiafk.hittable.Hittable::onInitializeClient",
+				"adapter": "kotlin"
+			}
+		],
+		"modmenu": [
+			"me.lumiafk.hittable.modmenu.ModMenuApiImpl"
+		]
+	}
 }
