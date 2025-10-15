@@ -32,6 +32,7 @@ tasks {
 			"minecraft_version" to libs.versions.minecraft.get(),
 			"fabric_language_kotlin_version" to libs.versions.fabricLanguageKotlin.get(),
 			"yacl_version" to libs.versions.yacl.get(),
+			"fabric_loader_version" to libs.versions.fabricLoader.get(),
 			"modmenu_version" to libs.versions.modMenu.get(),
 		)
 		filteringCharset = "UTF-8"
@@ -61,7 +62,7 @@ publishMods {
 	modrinth {
 		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
 		projectId = "NxDKOEV1"
-		minecraftVersions.addAll("1.21.2", "1.21.3", "1.21.4", "1.21.5", "1.21.6", "1.21.7", "1.21.8")
+		minecraftVersions.addAll("1.21.9", "1.21.10")
 		requires("fabric-api")
 		requires("fabric-language-kotlin")
 		requires("yacl")

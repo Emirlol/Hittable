@@ -11,7 +11,7 @@ object Hittable {
         check(ConfigHandler.load()) { "Failed to load config." }
         ClientCommandRegistrationCallback.EVENT.register { dispatcher, _ ->
             dispatcher.register(
-                literal("hittable").then(literal("config").executes { context ->
+                literal(NAMESPACE).then(literal("config").executes { context ->
                     context.source.client.let {
                         it.send {
                             it.setScreen(ConfigHandler.createGui(it.currentScreen))
@@ -22,4 +22,6 @@ object Hittable {
             )
         }
     }
+
+    const val NAMESPACE = "hittable"
 }
