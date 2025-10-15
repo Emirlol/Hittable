@@ -21,7 +21,7 @@
 	"depends": {
 		"fabricloader": ">=0.16.7",
 		"fabric-api": "*",
-		"minecraft": ">=1.21.2 <=1.21.6",
+		"minecraft": ">=1.21.2 <=1.21.8",
 		"fabric-language-kotlin": ">=${fabric_language_kotlin_version}",
 		"yet_another_config_lib_v3": ">=${yacl_version}"
 	},

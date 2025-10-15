@@ -61,7 +61,7 @@ publishMods {
 	modrinth {
 		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
 		projectId = "NxDKOEV1"
-		minecraftVersions.addAll("1.21.2", "1.21.3", "1.21.4", "1.21.5", "1.21.6")
+		minecraftVersions.addAll("1.21.2", "1.21.3", "1.21.4", "1.21.5", "1.21.6", "1.21.7", "1.21.8")
 		requires("fabric-api")
 		requires("fabric-language-kotlin")
 		requires("yacl")
