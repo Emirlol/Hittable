@@ -4,8 +4,9 @@ plugins {
 	alias(libs.plugins.modPublish)
 }
 
-group = "me.lumiafk"
-version = "${properties["mod_version"]}+${libs.versions.minecraft.get()}"
+group = "me.ancientri"
+val modVersion = properties["mod_version"] as String
+version = "$modVersion+${libs.versions.minecraft.get()}"
 
 repositories {
 	mavenCentral()
@@ -28,7 +29,7 @@ dependencies {
 tasks {
 	processResources {
 		val map = mapOf(
-			"version" to version,
+			"version" to modVersion,
 			"minecraft_version" to libs.versions.minecraft.get(),
 			"fabric_language_kotlin_version" to libs.versions.fabricLanguageKotlin.get(),
 			"yacl_version" to libs.versions.yacl.get(),
@@ -55,14 +56,21 @@ publishMods {
 	file = tasks.remapJar.get().archiveFile
 	modLoaders.add("fabric")
 	type = STABLE
-	displayName = "Hittable ${properties["mod_version"]} for Minecraft ${libs.versions.minecraft.get()}"
-	changelog = """
-		
-	""".trimIndent()
+	displayName = "Hittable $modVersion for Minecraft ${libs.versions.minecraft.get()}"
+	changelog = providers.fileContents(layout.projectDirectory.file("CHANGELOG.md")).asText
+		.map {
+			it.lineSequence()
+				.dropWhile { line -> !line.startsWith("## v$modVersion") } // Skip until this version's header
+				.drop(1) // Take the header
+				.takeWhile { line -> !line.startsWith("##") } // Take until next header
+				.joinToString("\n")
+				.trim() // Drop trailing newlines
+		}
+
 	modrinth {
 		accessToken = providers.environmentVariable("MODRINTH_TOKEN")
 		projectId = "NxDKOEV1"
-		minecraftVersions.addAll("1.21.9", "1.21.10")
+		minecraftVersions.addAll("1.21.9", "1.21.10", "1.21.11")
 		requires("fabric-api")
 		requires("fabric-language-kotlin")
 		requires("yacl")

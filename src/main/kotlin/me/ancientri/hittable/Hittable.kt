@@ -1,7 +1,7 @@
-package me.lumiafk.hittable
+package me.ancientri.hittable
 
 import com.mojang.brigadier.Command
-import me.lumiafk.hittable.config.ConfigHandler
+import me.ancientri.hittable.config.ConfigHandler
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback
 

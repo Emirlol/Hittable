@@ -1,4 +1,4 @@
-package me.lumiafk.hittable
+package me.ancientri.hittable
 
 import net.minecraft.text.Text
 

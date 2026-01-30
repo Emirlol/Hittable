@@ -21,7 +21,7 @@
 	"depends": {
 		"fabricloader": ">=${fabric_loader_version}",
 		"fabric-api": "*",
-		"minecraft": ">=1.21.9 <=1.21.10",
+		"minecraft": ">=1.21.9 <=1.21.11",
 		"fabric-language-kotlin": ">=${fabric_language_kotlin_version}",
 		"yet_another_config_lib_v3": ">=${yacl_version}"
 	},
@@ -31,12 +31,12 @@
 	"entrypoints": {
 		"client": [
 			{
-				"value": "me.lumiafk.hittable.Hittable::onInitializeClient",
+				"value": "me.ancientri.hittable.Hittable::onInitializeClient",
 				"adapter": "kotlin"
 			}
 		],
 		"modmenu": [
-			"me.lumiafk.hittable.modmenu.ModMenuApiImpl"
+			"me.ancientri.hittable.modmenu.ModMenuApiImpl"
 		]
 	}
 }

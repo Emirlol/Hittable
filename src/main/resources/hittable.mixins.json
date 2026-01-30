@@ -1,13 +1,13 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "me.lumiafk.hittable.mixins",
-  "compatibilityLevel": "JAVA_21",
-  "client": [
-    "EntityMixin",
-    "MinecraftClientMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  }
+	"required": true,
+	"minVersion": "0.8",
+	"package": "me.ancientri.hittable.mixins",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"EntityMixin",
+		"MinecraftClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
 }

@@ -1,4 +1,4 @@
-package me.lumiafk.hittable.config
+package me.ancientri.hittable.config
 
 import dev.isxander.yacl3.api.controller.BooleanControllerBuilder
 import dev.isxander.yacl3.api.controller.ColorControllerBuilder
@@ -6,8 +6,8 @@ import dev.isxander.yacl3.config.v2.api.ConfigClassHandler
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder
 import dev.isxander.yacl3.dsl.YetAnotherConfigLib
 import dev.isxander.yacl3.dsl.binding
-import me.lumiafk.hittable.Hittable
-import me.lumiafk.hittable.Util.text
+import me.ancientri.hittable.Hittable
+import me.ancientri.hittable.Util.text
 import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.client.gui.screen.Screen
 
