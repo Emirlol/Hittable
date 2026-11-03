@@ -9,7 +9,7 @@ import dev.isxander.yacl3.dsl.binding
 import me.ancientri.hittable.Hittable
 import me.ancientri.hittable.Util.text
 import net.fabricmc.loader.api.FabricLoader
-import net.minecraft.client.gui.screen.Screen
+import net.minecraft.client.gui.screens.Screen
 
 object ConfigHandler {
     private val HANDLER = ConfigClassHandler.createBuilder(Config::class.java).serializer {

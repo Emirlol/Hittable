@@ -1,7 +1,7 @@
 package me.ancientri.hittable
 
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 
 object Util {
-    val String.text: Text get() = Text.of(this)
+    val String.text: Component get() = Component.literal(this)
 }
