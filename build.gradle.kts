@@ -17,13 +17,12 @@ repositories {
 
 dependencies {
 	minecraft(libs.minecraft)
-	mappings(variantOf(libs.yarn) { classifier("v2") })
-	modImplementation(libs.fabricLoader)
+	implementation(libs.fabricLoader)
 
-	modImplementation(libs.fabricApi)
-	modImplementation(libs.fabricLanguageKotlin)
-	modImplementation(libs.yacl)
-	modCompileOnly(libs.modMenu)
+	implementation(libs.fabricApi)
+	implementation(libs.fabricLanguageKotlin)
+	implementation(libs.yacl)
+	compileOnly(libs.modMenu)
 }
 
 tasks {
@@ -43,7 +42,10 @@ tasks {
 		}
 	}
 	kotlin {
-		jvmToolchain(21)
+		jvmToolchain(26)
+		compilerOptions {
+			jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_26)
+		}
 	}
 	jar {
 		from("LICENSE") {
@@ -53,7 +55,7 @@ tasks {
 }
 
 publishMods {
-	file = tasks.remapJar.get().archiveFile
+	file = tasks.jar.get().archiveFile
 	modLoaders.add("fabric")
 	type = STABLE
 	displayName = "Hittable $modVersion for Minecraft ${libs.versions.minecraft.get()}"

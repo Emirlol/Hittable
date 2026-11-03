@@ -1,24 +1,22 @@
 [versions]
 # Required stuff, https://fabricmc.net/develop/
-minecraft = "1.21.9"
-yarnMappings = "1.21.9+build.1"
-fabricLoader = "0.17.3"
-fabricApi = "0.134.0+1.21.9"
+minecraft = "26.1.2"
+fabricLoader = "0.20.1"
+fabricApi = "0.155.3+26.1.2"
 
-fabricLanguageKotlin = "1.13.6+kotlin.2.2.20" # https://github.com/FabricMC/fabric-language-kotlin/releases
+fabricLanguageKotlin = "1.14.2+kotlin.2.4.21"
 
 # Plugins
-kotlin = "2.2.20" # Match this to the one above
-loom = "1.11-SNAPSHOT" # https://github.com/FabricMC/fabric-loom/releases
+kotlin = "2.5.0-Beta2" # Upgraded for JVM_25 target support
+loom = "1.19.3" # https://github.com/FabricMC/fabric-loom/releases
 modPublish = "1.0.0" # https://github.com/modmuss50/mod-publish-plugin
 
 # Other dependencies
-modMenu = "16.0.0-rc.1" # https://github.com/TerraformerscMC/ModMenu/releases
-yacl = "3.8.0+1.21.9-fabric" # https://modrinth.com/mod/yacl/versions
+modMenu = "18.0.2"
+yacl = "3.9.7+26.1-fabric"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
-yarn = { module = "net.fabricmc:yarn", version.ref = "yarnMappings" }
 fabricLoader = { module = "net.fabricmc:fabric-loader", version.ref = "fabricLoader" }
 fabricLanguageKotlin = { module = "net.fabricmc:fabric-language-kotlin", version.ref = "fabricLanguageKotlin" }
 fabricApi = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabricApi" }
@@ -30,5 +28,5 @@ yacl = { module = "dev.isxander:yet-another-config-lib", version.ref = "yacl" }
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-loom = { id = "fabric-loom", version.ref = "loom" }
+loom = { id = "net.fabricmc.fabric-loom", version.ref = "loom" }
 modPublish = { id = "me.modmuss50.mod-publish-plugin", version.ref = "modPublish"}
